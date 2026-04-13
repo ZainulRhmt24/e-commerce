@@ -29,7 +29,7 @@ export default async function HomePage(
   const categoryFilter = searchParams?.category as string | undefined
   const supabase = await createClient()
   let query = supabase.from('products').select('*').order('created_at', { ascending: false })
-  
+
   if (categoryFilter) {
     query = query.eq('category', categoryFilter)
   }
@@ -46,25 +46,25 @@ export default async function HomePage(
       <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 lg:pt-32 border-b border-border">
         {/* Decorative Grid Lines */}
         <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/djp7d121x/image/upload/v1689255839/grid_1_f5l9x0.png')] opacity-10 mix-blend-overlay pointer-events-none" />
-        
+
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-          
+
           {/* Left Content */}
           <div className="flex-1 max-w-2xl relative z-20">
             <div className="inline-flex items-center gap-3 px-4 py-1.5 border border-border bg-card shadow-sm mb-8 animate-in fade-in slide-in-from-bottom-2">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">The 2025 Édition</span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">The 2026 Édition</span>
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-foreground mb-8 tracking-tighter leading-[1.05] font-serif">
-              Objects <br /> 
+              Objects <br />
               of <span className="text-muted-foreground italic font-light">Desire.</span>
             </h1>
-            
+
             <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-lg leading-relaxed font-medium">
               We meticulously curate the world’s most exquisite electronics and modern essentials. Uncompromising quality meets timeless design.
             </p>
-            
+
             <div className="flex flex-wrap gap-6 items-center">
               <Link href="#browse">
                 <Button size="lg" className="h-14 px-10 rounded-none text-sm font-bold uppercase tracking-[0.15em] bg-foreground text-background hover:bg-foreground/90 transition-all">
@@ -83,9 +83,9 @@ export default async function HomePage(
             <div className="absolute -inset-4 bg-border/40 transform rotate-2 transition-transform duration-700 group-hover:rotate-1"></div>
             <div className="relative aspect-[4/5] lg:aspect-square w-full bg-muted overflow-hidden shadow-2xl">
               {/* Stunning Unsplash placeholder for Hero */}
-              <img 
-                src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?auto=format&fit=crop&q=100&w=1200" 
-                alt="Premium Lifestyle" 
+              <img
+                src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?auto=format&fit=crop&q=100&w=1200"
+                alt="Premium Lifestyle"
                 className="object-cover w-full h-full scale-105 group-hover:scale-100 transition-transform duration-[1.5s] ease-out"
               />
               <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
@@ -93,7 +93,7 @@ export default async function HomePage(
               </div>
             </div>
           </div>
-          
+
         </div>
       </section>
 
@@ -113,7 +113,7 @@ export default async function HomePage(
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {featuredProducts.map((product: Product) => (
                 <div key={product.id} className="relative group overflow-hidden rounded-3xl bg-card border border-border/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500">
-                   <ProductCard {...product} />
+                  <ProductCard {...product} />
                 </div>
               ))}
             </div>
@@ -131,7 +131,7 @@ export default async function HomePage(
             </div>
             <h2 className="text-4xl font-bold text-foreground tracking-tight">Browse Everything</h2>
           </div>
-          
+
           {categories.length > 0 && (
             <CategoryFilters categories={categories} currentCategory={categoryFilter} />
           )}
@@ -164,16 +164,16 @@ export default async function HomePage(
 
       {/* Newsletter / Call to Action */}
       <section className="py-24 border-t border-border overflow-hidden relative">
-         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] -mr-48 -mt-48" />
-         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <h2 className="text-4xl font-bold tracking-tight mb-4">Stay in the Loop</h2>
-            <p className="text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
-              Get early access to exclusive collection drops and premium content curated just for you.
-            </p>
-            <div className="mt-10">
-              <NewsletterForm />
-            </div>
-         </div>
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] -mr-48 -mt-48" />
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+          <h2 className="text-4xl font-bold tracking-tight mb-4">Stay in the Loop</h2>
+          <p className="text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
+            Get early access to exclusive collection drops and premium content curated just for you.
+          </p>
+          <div className="mt-10">
+            <NewsletterForm />
+          </div>
+        </div>
       </section>
     </div>
   )
