@@ -5,11 +5,13 @@ import { Button } from '@/components/ui/button'
 import { useCart } from '@/hooks/use-cart'
 import Link from 'next/link'
 import { Input } from '@/components/ui/input'
+import { useRouter } from 'next/navigation'
 
 export default function CheckoutPage() {
   const { items, total, clearCart } = useCart()
   const [isLoading, setIsLoading] = useState(false)
   const [email, setEmail] = useState('')
+  const router = useRouter()
 
   const handleCheckout = async () => {
     if (!email || items.length === 0) {
@@ -19,37 +21,11 @@ export default function CheckoutPage() {
 
     setIsLoading(true)
     try {
-      const response = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          items: items.map((item) => ({
-            price_data: {
-              currency: 'usd',
-              unit_amount: Math.round(item.price * 100),
-              product_data: {
-                name: item.name,
-                images: [item.image],
-              },
-            },
-            quantity: item.quantity,
-          })),
-          customer_email: email,
-          success_url: `${process.env.NEXT_PUBLIC_SITE_URL || window.location.origin}/success`,
-          cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL || window.location.origin}/checkout`,
-        }),
-      })
-
-      const data = await response.json()
-
-      if (data.url) {
-        window.location.href = data.url
-        clearCart()
-      } else {
-        alert('Error creating checkout session')
-      }
+      // Simulate payment processing for portfolio display
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      
+      clearCart()
+      router.push('/success')
     } catch (error) {
       console.error('Checkout error:', error)
       alert('Error during checkout')
