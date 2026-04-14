@@ -19,17 +19,18 @@ export function ProductCard({ id, name, price, image, description, category }: P
   const [isAdding, setIsAdding] = useState(false)
   const { addItem } = useCart()
 
-  // High-end Unsplash placeholders for empty database images
-  const PREMIUM_IMAGES = [
-    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1491933382434-500287f9b54b?auto=format&fit=crop&q=80&w=800",
-  ]
+  const IMAGE_MAP: Record<string, string> = {
+    'Premium Wireless Headphones': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=800',
+    'Ergonomic Mechanical Keyboard': 'https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&q=80&w=800',
+    '4K Webcam': 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800',
+    'USB-C Hub': 'https://images.unsplash.com/photo-1531492746076-161fa9bc9ce3?auto=format&fit=crop&q=80&w=800',
+    'Laptop Stand': 'https://images.unsplash.com/photo-1527443195645-1133f7f28990?auto=format&fit=crop&q=80&w=800',
+    'Mechanical Mouse': 'https://images.unsplash.com/photo-1527814050087-151f1585be13?auto=format&fit=crop&q=80&w=800',
+    'Monitor Light Bar': 'https://images.unsplash.com/photo-1586715104618-9c16260195ee?auto=format&fit=crop&q=80&w=800',
+    'Portable SSD 1TB': 'https://images.unsplash.com/photo-1618410320928-25228d811631?auto=format&fit=crop&q=80&w=800',
+  }
   
-  // Pick deterministically based on name length so the same product gets the same image
-  const fallbackImage = PREMIUM_IMAGES[name.length % PREMIUM_IMAGES.length]
+  const fallbackImage = IMAGE_MAP[name] || "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80&w=800"
   const finalImage = image || fallbackImage
 
   const handleAddToCart = async () => {
