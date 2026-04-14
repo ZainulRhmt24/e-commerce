@@ -23,13 +23,12 @@ export function ProductCard({ id, name, price, image, description, category }: P
     'Premium Wireless Headphones': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=800',
     'Ergonomic Mechanical Keyboard': 'https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&q=80&w=800',
     '4K Webcam': 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800',
-    'USB-C Hub': 'https://images.unsplash.com/photo-1531492746076-161fa9bc9ce3?auto=format&fit=crop&q=80&w=800',
+    'USB-C Hub': 'https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&q=80&w=800',
     'Laptop Stand': 'https://images.unsplash.com/photo-1527443195645-1133f7f28990?auto=format&fit=crop&q=80&w=800',
-    'Mechanical Mouse': 'https://images.unsplash.com/photo-1527814050087-151f1585be13?auto=format&fit=crop&q=80&w=800',
-    'Monitor Light Bar': 'https://images.unsplash.com/photo-1586715104618-9c16260195ee?auto=format&fit=crop&q=80&w=800',
+    'Monitor Light Bar': 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?auto=format&fit=crop&q=80&w=800',
     'Portable SSD 1TB': 'https://images.unsplash.com/photo-1618410320928-25228d811631?auto=format&fit=crop&q=80&w=800',
   }
-  
+
   const fallbackImage = IMAGE_MAP[name] || "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80&w=800"
   const finalImage = image || fallbackImage
 

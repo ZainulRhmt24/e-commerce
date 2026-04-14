@@ -10,7 +10,7 @@ interface Product {
   id: string
   name: string
   price: number
-  image_url: string
+  image: string
   description: string
   category: string
 }
@@ -145,7 +145,7 @@ export default async function HomePage(
                 id={product.id}
                 name={product.name}
                 price={product.price}
-                image={product.image_url || ''}
+                image={product.image}
                 description={product.description}
                 category={product.category}
               />
